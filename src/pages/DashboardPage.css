@@ -1,0 +1,219 @@
+/* src/pages/DashboardPage.css */
+
+/* Root layout */
+.dashboard-root {
+  display: flex;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top right, rgba(155, 140, 255, 0.06), transparent 32%),
+    radial-gradient(circle at top left, rgba(0, 201, 167, 0.05), transparent 28%),
+    var(--bg);
+}
+
+.dashboard-wrapper {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  transition: margin-left var(--transition-slow);
+  min-width: 0;
+}
+
+.dashboard-root.sidebar-collapsed .dashboard-wrapper {
+  margin-left: var(--sidebar-collapsed);
+}
+
+/* Main content area */
+.dashboard-main {
+  padding: calc(var(--navbar-height) + 24px) 24px 24px;
+  min-height: 100vh;
+  max-width: 1400px;
+}
+
+/* Page header */
+.dashboard-page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+  /* ✅ FIX: animation moved to inner children via .dashboard-page-header-inner.
+     Animating transform on a parent breaks position:fixed descendants —
+     the popup overlay would anchor to this element instead of the viewport
+     during the 400ms animation, then snap → causing the flicker. */
+}
+
+/* Animate the inner content wrapper instead */
+.dashboard-page-header > * {
+  animation: fadeInUp 0.4s ease both;
+}
+
+.dashboard-page-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.greeting-icon {
+  color: var(--teal);
+  flex-shrink: 0;
+}
+
+.dashboard-page-sub {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+}
+
+.dashboard-page-sub strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.dashboard-page-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-date-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.header-date-chip svg {
+  color: var(--mm-purple);
+  flex-shrink: 0;
+}
+
+/* Two column layout */
+.dashboard-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* Profile placeholder */
+.profile-placeholder-card {
+  padding: 32px;
+  text-align: center;
+}
+
+.profile-placeholder-icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 14px;
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(155, 140, 255, 0.1),
+    rgba(0, 201, 167, 0.1)
+  );
+  color: var(--mm-purple);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Footer */
+.dashboard-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0 4px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 12px;
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--mm-purple);
+}
+
+/* Spacing between sections */
+.dashboard-main > * {
+  margin-bottom: 16px;
+}
+
+.dashboard-main > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .dashboard-two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-wrapper {
+    margin-left: 0 !important;
+  }
+
+  .dashboard-main {
+    padding: calc(var(--navbar-height) + 16px) 16px 16px;
+  }
+
+  .dashboard-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard-page-title {
+    font-size: 18px;
+  }
+
+  .dashboard-page-header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-main {
+    padding: calc(var(--navbar-height) + 12px) 12px 12px;
+  }
+
+  .dashboard-page-header-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dashboard-page-header-actions .btn {
+    width: 100%;
+  }
+
+  .header-date-chip {
+    justify-content: center;
+  }
+}

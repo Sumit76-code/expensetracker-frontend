@@ -1,0 +1,265 @@
+/* src/components/AddExpensePage.css */
+
+/*
+  MoneyMap logo gradient: purple #c4b5fd → blue #7dd3fc → cyan #93c5fd
+  All interactive elements use this palette instead of flat blue.
+*/
+
+:root {
+  --mm-grad:      linear-gradient(135deg, #9b8cff 0%, #58d7ff 100%);
+  --mm-grad-hover:linear-gradient(135deg, #b3a6ff 0%, #7de8ff 100%);
+  --mm-grad-dark: linear-gradient(135deg, #7a6de0 0%, #38b8e8 100%);
+  --mm-glow:      rgba(155, 140, 255, 0.28);
+  --mm-glow-sm:   rgba(155, 140, 255, 0.14);
+  --mm-purple:    #9b8cff;
+  --mm-cyan:      #58d7ff;
+}
+
+/* ── Root ── */
+.aep-root {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+/* ── Landing ── */
+.aep-landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.aep-landing-title {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.aep-landing-sub {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: -16px;
+}
+
+/* ── Add Expense Button — Option A Gradient Pill ── */
+.aep-split-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 32px;
+  background: linear-gradient(135deg, #6366f1, #3b82f6);
+  color: white;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(99, 102, 241, 0.38);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.aep-split-main:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(99, 102, 241, 0.5);
+  filter: brightness(1.08);
+}
+
+.aep-split-main:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
+}
+
+
+
+/* ── Form view ── */
+.aep-form-wrap {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.aep-form-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.aep-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 7px 12px;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.aep-back-btn:hover {
+  border-color: var(--mm-purple);
+  color: var(--mm-purple);
+}
+
+.aep-form-title {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.aep-form-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+
+.aep-form-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.aep-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.aep-form-group label {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.aep-form-group .input-field {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card-2);
+  color: var(--text-primary);
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.aep-form-group .input-field:focus {
+  border-color: var(--mm-purple);
+  box-shadow: 0 0 0 3px rgba(155, 140, 255, 0.12);
+}
+
+.aep-form-group .input-field::placeholder { color: var(--text-muted); }
+
+.aep-form-row { display: flex; gap: 12px; }
+.aep-form-row .aep-form-group { flex: 1; }
+
+/* Category picker */
+.aep-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.aep-picker-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  background: var(--bg-card-2);
+  cursor: pointer;
+  transition: border-color 0.18s ease, background 0.18s ease;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  width: 100%;
+  text-align: left;
+}
+
+.aep-picker-item:hover { border-color: var(--picker-color, var(--mm-purple)); }
+.aep-picker-item.active { font-weight: 600; }
+
+/* Mode picker */
+.aep-mode-row { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.aep-mode-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card-2);
+  cursor: pointer;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+  white-space: nowrap;
+}
+
+.aep-mode-item:hover {
+  border-color: var(--mm-purple);
+  color: var(--mm-purple);
+  background: rgba(155, 140, 255, 0.06);
+}
+
+.aep-mode-item.active {
+  border-color: var(--mm-purple);
+  background: rgba(155, 140, 255, 0.1);
+  color: var(--mm-purple);
+  font-weight: 600;
+}
+
+/* Form footer */
+.aep-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-card-2);
+}
+
+/* Override btn-primary to use logo gradient inside this page */
+.aep-form-footer .btn-primary {
+  background: var(--mm-grad) !important;
+  box-shadow: 0 4px 16px var(--mm-glow) !important;
+}
+
+.aep-form-footer .btn-primary:hover {
+  background: var(--mm-grad-hover) !important;
+  box-shadow: 0 8px 24px var(--mm-glow) !important;
+  transform: translateY(-1px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .aep-root { padding: 24px 16px; }
+  .aep-picker-grid { grid-template-columns: 1fr 1fr; }
+  .aep-form-row { flex-direction: column; }
+  .aep-split-main { font-size: 13px; padding: 11px 24px; }
+}

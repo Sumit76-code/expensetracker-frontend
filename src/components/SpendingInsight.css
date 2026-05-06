@@ -1,0 +1,26 @@
+/* SpendingInsight card styles */
+
+.spending-item-clickable {
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.spending-item-clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border-color: var(--ins-color) !important;
+}
+
+.spending-item-active {
+  border-color: var(--ins-color) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--ins-color) 25%, transparent),
+              0 4px 16px color-mix(in srgb, var(--ins-color) 15%, transparent) !important;
+}
+
+/* When any card is active, blur the inactive siblings */
+.spending-grid:has(.spending-item-active) .spending-item:not(.spending-item-active) {
+  filter: blur(2px);
+  opacity: 0.45;
+  transform: scale(0.98);
+  transition: filter 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}

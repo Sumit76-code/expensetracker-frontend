@@ -1,0 +1,283 @@
+/* src/components/Dashboard/Analytics.css */
+
+.analytics-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Spending Insight ── */
+.spending-insight-card {
+  padding: 20px;
+}
+
+.spending-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.spending-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 14px 14px 18px;
+  background:
+    linear-gradient(135deg, rgba(155, 140, 255, 0.025), rgba(0, 201, 167, 0.02)),
+    var(--bg-card-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.spending-item:hover {
+  border-color: var(--ins-color, var(--mm-purple));
+  box-shadow: 0 0 0 3px rgba(155, 140, 255, 0.06);
+}
+
+.spending-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--ins-color, var(--mm-purple));
+  border-radius: 2px 0 0 2px;
+}
+
+.spending-item-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--ins-color, var(--mm-purple)) 10%, white);
+  color: var(--ins-color, var(--mm-purple));
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spending-item-icon svg {
+  flex-shrink: 0;
+}
+
+.spending-item-label {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 3px;
+}
+
+.spending-item-value {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.spending-item-sub {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.spending-ai-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--mm-grad);
+  color: white;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+/* ── Analytics Card ── */
+.analytics-card {
+  padding: 20px;
+}
+
+.analytics-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.chart-tabs {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  gap: 2px;
+}
+
+.chart-tab {
+  padding: 5px 14px;
+  border-radius: 6px;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.chart-tab.active {
+  background: var(--bg-card);
+  color: var(--mm-purple);
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+
+.chart-tab:hover:not(.active) {
+  color: var(--text-primary);
+}
+
+/* ── Chart area ── */
+.chart-area {
+  min-height: 220px;
+}
+
+.chart-container {
+  animation: fadeIn 0.25s ease;
+}
+
+.chart-sub-title {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+/* ── Line & Bar wrapper ── */
+.line-chart-wrap {
+  width: 100%;
+  overflow: visible;
+}
+
+/* ── Donut chart ── */
+.donut-wrap {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.donut-slice {
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.donut-slice:hover {
+  opacity: 0.82;
+}
+
+.donut-center-label {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 10px;
+  fill: #94a3b8;
+  font-weight: 500;
+}
+
+.donut-center-value {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 14px;
+  fill: #0a0f1e;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 140px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legend-label {
+  flex: 1;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.legend-pct {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0;
+}
+
+/* ── Smart tip (empty state) ── */
+.smart-tip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: rgba(155, 140, 255, 0.04);
+  border: 1px dashed rgba(155, 140, 255, 0.2);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+.tip-icon {
+  color: var(--mm-purple);
+  flex-shrink: 0;
+  display: inline-flex;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .spending-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .donut-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chart-tabs {
+    flex-wrap: wrap;
+  }
+
+  .chart-area {
+    min-height: 180px;
+  }
+}
