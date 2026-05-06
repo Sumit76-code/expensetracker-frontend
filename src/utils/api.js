@@ -1,8 +1,7 @@
 // frontend/src/utils/api.js
 import axios from 'axios';
 
-const rawBaseURL =
-  process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const rawBaseURL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 const baseURL = rawBaseURL.endsWith('/api')
   ? rawBaseURL
